@@ -27,9 +27,9 @@ GPT作者的最大模型GPT-2是一个1.5B参数的Transformer，在零样本设
 
 # 模型下载
 
-| 数据集   | owner      | model        | 语言    | 层数 | hidden | head | 参数量 |
-|-------|------------|--------------|-------|----|--------|------|-----|
-| 新闻[1]    | Brian Shen | [gpt_12L_cn] | cn    | 12 | 768    | 12   | M   |
+| 数据集   | owner      | model        | 语言    | 层数 | hidden | head | 参数量    |
+|-------|------------|--------------|-------|----|--------|------|--------|
+| 新闻[1]    | Brian Shen | [gpt_12L_cn] | cn    | 12 | 768    | 12   | 102.3M |
 
 [gpt_12L_cn]: https://transformers-models.obs.cn-north-4.myhuaweicloud.com/gpt/cn/pretrain/gpt2_L-12_H-768_A-12_CN.zip
 
@@ -56,8 +56,26 @@ model = AutoModel.from_pretrained("MODEL_NAME")
 
 或
 
+tokenizer = BertTokenizer.from_pretrained("MODEL_NAME")
+model = GPT2Model.from_pretrained("MODEL_NAME")
+
+或
+
 tokenizer = GPT2Tokenizer.from_pretrained("MODEL_NAME")
 model = GPT2Model.from_pretrained("MODEL_NAME")
+```
+
+## 文本生成
+
+以`GPT_L-12_H-768_A-12_CN`示例，如何进行文本生成。
+
+```python
+tokenizer = BertTokenizer.from_pretrained(model_name)
+model = GPT2LMHeadModel.from_pretrained(model_name, return_dict=True, pad_token_id=0)
+
+mask = pipeline('text-generation', model=model, tokenizer=tokenizer)
+text = '明月几时有，'
+response = mask(text, max_length=60)
 ```
 
 ## 引用
