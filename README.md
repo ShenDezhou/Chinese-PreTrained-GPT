@@ -29,7 +29,7 @@ GPT作者的最大模型GPT-2是一个1.5B参数的Transformer，在零样本设
 
 | 数据集   | owner      | model        | 语言    | 层数 | hidden | head | 参数量    |
 |-------|------------|--------------|-------|----|--------|------|--------|
-| 古诗[1] | Brian Shen | [gpt_12L_cn] | cn    | 12 | 768    | 12   | 102.3M |
+| 古诗[1] | Brian Shen | [gpt_12L_cn] | cn    | 12 | 768    | 12   | 102.0M |
 
 [gpt_12L_cn]: https://transformers-models.obs.cn-north-4.myhuaweicloud.com/gpt/cn/pretrain/gpt2_L-12_H-768_A-12_CN.zip
 
