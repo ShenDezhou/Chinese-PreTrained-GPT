@@ -78,6 +78,9 @@ text = '明月几时有，'
 response = mask(text, max_length=60)
 ```
 
+本项目增加了一个colab工具，支持贪婪搜索、集束搜索、流畅度惩罚、采样等算法。
+示例notebook见[text-generation_cn_gpt.ipynb](colab%2Ftext-generation_cn_gpt.ipynb)
+
 ## 引用
 如果本目录中的内容对你的研究工作有所帮助，欢迎在论文中引用下述技术报告：
 
