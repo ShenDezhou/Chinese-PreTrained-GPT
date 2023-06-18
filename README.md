@@ -24,16 +24,32 @@ GPT作者的最大模型GPT-2是一个1.5B参数的Transformer，在零样本设
 模型的样本反映了这些改进，包含有条理的文本段落。
 这些发现表明，建立语言处理系统的有希望的路径是从自然发生的演示中学习执行任务。
 ```
+# 分词下载
+
+| 数据集       | owner       | model        | 语言 | 词表数| 特殊词数|
+|-----------|-------------|--------------|----|-----|----|
+| 小说、哲学[1]  | Brian Shen  | [bpe_50k_cn] | cn |50257| 5|
+| OpenWeb   | OpenAI      | [gpt2-50k]   | en | 50257| 1|
+
+
+[bpe_50k_cn]: https://transformers-models.obs.cn-north-4.myhuaweicloud.com/gpt/tokenizer/bpe_50k_cn.zip
+[gpt2-50k]: https://transformers-models.obs.cn-north-4.myhuaweicloud.com/gpt/tokenizer/gpt2-50k.zip
 
 # 模型下载
 
-| 数据集   | owner      | model        | 语言    | 层数 | hidden | head | 参数量    |
-|-------|------------|--------------|-------|----|--------|------|--------|
-| 古诗[1] | Brian Shen | [gpt_12L_cn] | cn    | 12 | 768    | 12   | 102.0M |
+| 数据集   | owner      | model                | 语言    | 层数 | hidden | head | 参数量    |
+|-------|------------|----------------------|-------|----|--------|------|--------|
+| 古诗[1] | Brian Shen | [gpt_12L_cn]         | cn    | 12 | 768    | 12   | 102.0M |
+| 新闻、哲学 | Brian Shen | [gpt2_tiny_cn_pt]    | cn     | 2  | 128    | 2    | M |
+| 新闻、哲学 | Brian Shen | [gpt2_mini_cn_pt]    | cn     | 4  | 256    | 4    | M |
+| 新闻、哲学 | Brian Shen | [gpt2_small_cn_pt]   | cn     | 4  | 512    | 4    | M |
+| 新闻、哲学 | Brian Shen | [gpt2_medium_cn_pt]  | cn     | 6  | 512    | 6    | M |
+| 新闻、哲学 | Brian Shen | [gpt2_base_cn_pt]    | cn     | 12 | 768    | 12   | M |
 
 [gpt_12L_cn]: https://transformers-models.obs.cn-north-4.myhuaweicloud.com/gpt/cn/pretrain/gpt2_L-12_H-768_A-12_CN.zip
 
 > [1] 使用中文文本，使用BERT词表，按照GPT2网络结构训练而成。
+> [2] GPT2词表，GPT2网络。
 
 # PyTorch/Tensorflow版本
 提供PyTorch/Tensorflow1版本。
@@ -56,7 +72,7 @@ model = AutoModel.from_pretrained("MODEL_NAME")
 
 或
 
-tokenizer = BertTokenizer.from_pretrained("MODEL_NAME")
+tokenizer = gpt2Tokenizer.from_pretrained("MODEL_NAME")
 model = GPT2Model.from_pretrained("MODEL_NAME")
 
 或
@@ -70,7 +86,7 @@ model = GPT2Model.from_pretrained("MODEL_NAME")
 以`GPT_L-12_H-768_A-12_CN`示例，如何进行文本生成。
 
 ```python
-tokenizer = BertTokenizer.from_pretrained(model_name)
+tokenizer = gpt2Tokenizer.from_pretrained(model_name)
 model = GPT2LMHeadModel.from_pretrained(model_name, return_dict=True, pad_token_id=0)
 
 mask = pipeline('text-generation', model=model, tokenizer=tokenizer)
