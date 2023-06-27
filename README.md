@@ -26,14 +26,15 @@ GPT作者的最大模型GPT-2是一个1.5B参数的Transformer，在零样本设
 ```
 # 分词下载
 
-| 数据集       | owner       | model        | 语言 | 词表数| 特殊词数|
-|-----------|-------------|--------------|----|-----|----|
-| 小说、哲学[1]  | Brian Shen  | [bpe_50k_cn] | cn |50257| 5|
-| OpenWeb   | OpenAI      | [gpt2-50k]   | en | 50257| 1|
-
+| 数据集      | owner      | model        | 语言 | 词表数   | 分词库   | HuggingFace Tokenizer |
+|----------|------------|--------------|----|-------|--------------------|-----------------------|
+| 小说、哲学[1] | Brian Shen | [bpe_50k_cn] | cn | 50257 |                    | GPT2Tokenizer         |
+| OpenWeb  | OpenAI     | [gpt2-50k]   | en | 50257 |                    | GPT2Tokenizer         |
+| Web-100G-CN | Tsinghua   | [cpm-30k-cn] | cn | 30000 | jieba,sentencepiece| CpmTokenizer          |
 
 [bpe_50k_cn]: https://transformers-models.obs.cn-north-4.myhuaweicloud.com/gpt/tokenizer/bpe_50k_cn.zip
 [gpt2-50k]: https://transformers-models.obs.cn-north-4.myhuaweicloud.com/gpt/tokenizer/gpt2-50k.zip
+[cpm-30k-cn]: https://transformers-models.obs.cn-north-4.myhuaweicloud.com/gpt/tokenizer/cpm_30k_cn.zip
 
 # 模型下载
 
